@@ -14,7 +14,7 @@ public class MyBot implements SkillzBot {
      */
     @Override
     public void doTurn(Game game) {
-       
+       //ze lo cyber
         // Give orders to my elves.
         handleElves(game);
         // Give orders to my portals.

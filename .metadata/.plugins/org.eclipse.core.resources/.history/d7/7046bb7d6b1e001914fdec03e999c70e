@@ -38,7 +38,7 @@ public class MyBot implements SkillzBot {
             System.out.println("trolls around: " +getElfAura(game,elf).length);
             //try to run away
             if(canKite(game,elf))
-                // kite for one direction is not fully complete yet for now when cannot move the elf is attacking the IceTroll
+                // kite for one direction is not fully complet yet for now when cannot move the elf is attacking the IceTroll
                 kite(game,elf);
                 else
                 {
@@ -54,7 +54,7 @@ public class MyBot implements SkillzBot {
                             elfAttack(game,elf);
                         else
                         {
-                            //if our elf can't do something from the about by default he will go to the enemy castle
+                            //if our elf cant do something from the about by default he will go to the enemy castle
                             elf.moveTo(enemyCastle);
                         }
                     }
@@ -239,7 +239,7 @@ public class MyBot implements SkillzBot {
         return closeLavaGiant;
   }
   
-  // try to find the closest defensive portal to a LavaGiant if failed return null
+  // try to find the closest defesive portal to a LavaGiant if failed return null
   private Portal getBestPortal(Game game)
   {
      //check if there are any LavaGiants
@@ -457,7 +457,7 @@ public class MyBot implements SkillzBot {
             return false;
         return true;
     }
-    // if there is no defensive portal around our castle return true
+    // if there is no deffensive portal around our castle return true
     private boolean shouldMakeDefensivePortal(Game game)
     {
         if(!isDefensive(game))

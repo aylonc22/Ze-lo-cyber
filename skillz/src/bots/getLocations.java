@@ -46,7 +46,7 @@ public class getLocations
             }
         return closeEnemyIceTroll;
     }
-    //gets elf and array of threatening creatures return the best escape root
+    //gets elf and array of threatening creatures return the best escape root.
     public static Location getEscapeLocation(Game game,Elf chosenElf,IceTroll[] creatures) 
     {
     	int VectorSize=game.elfMaxSpeed;

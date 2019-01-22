@@ -14,7 +14,7 @@ public class MyBot implements SkillzBot {
      */
     @Override
     public void doTurn(Game game) {
-       
+       //ze lo cyber
         // Give orders to my elves.
         handleElves(game);
         // Give orders to my portals.
@@ -34,7 +34,7 @@ public class MyBot implements SkillzBot {
         // Go over all the living elves.
         for (Elf elf : game.getMyLivingElves())
         {
-            System.out.println(getLocations.getCloseEnemyIceTroll(game,elf));
+           border(game,elf);
             System.out.println("trolls around: " +getElfAura(game,elf).length);
             //try to run away
             if(canKite(game,elf))
@@ -465,5 +465,26 @@ public class MyBot implements SkillzBot {
         return true;
         
     }
+    private void border(Game game,Elf chosenElf)
+    {
+        IceTroll enemyIceTroll = getCloseEnemyIceTroll(game,chosenElf);
+        if(enemyIceTroll==null)
+           {
+                System.out.println("No ice troll");
+                return;
+           }
+        Boolean inBorder = chosenElf.getLocation().towards(enemyIceTroll.getLocation(),-(game.elfAttackRange)).inMap();
+        Location elfNewLocation = chosenElf.getLocation().towards(enemyIceTroll.getLocation(),-(game.elfAttackRange));
+        if(!inBorder && elfNewLocation.row == 0 )
+            System.out.println("top border");
+        else if(!inBorder && elfNewLocation.col == 0)
+                    System.out.println("left border");
+                    else if(!inBorder && elfNewLocation.col<elfNewLocation.row)
+                                 System.out.println("buttom border");
+                                 else if(!inBorder && elfNewLocation.col>elfNewLocation.row)
+                                 System.out.println("right border");
+                                 else
+                                 System.out.println("NO BORDER");
+    }                          
     
 }

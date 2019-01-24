@@ -14,7 +14,14 @@ public class Vectors
     private static int setPower(GameObject object)
     {
        if(object.type.equals("IceTrol"))
-    	   return 7;
+    	   return 1;
+        if(object.type.equals("Elf"))
+            return 2;
+        if(object.type.equals("Portal"))
+            return -1;
+        if(object.type.equals("Castle"))
+            return -2;
+        return 0; //if(object.type.equals("LavaGiant"))
     }
     public Location getLocation()
     {

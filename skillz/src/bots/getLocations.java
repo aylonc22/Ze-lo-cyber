@@ -53,7 +53,7 @@ public class getLocations
     	Location escapePoint , finalEscapePoint = new Location(0,0);
     	for(IceTroll iceTrol : creatures) 
     	{
-            escapePoint = chosenElf.getLocation().towards(iceTrol.getLocation(),-VectorSize);
+            escapePoint = iceTrol.getLocation().towards(chosenElf.getLocation(),VectorSize);
             finalEscapePoint.add(escapePoint);
     	}
     	finalEscapePoint.col /= creatures.length;

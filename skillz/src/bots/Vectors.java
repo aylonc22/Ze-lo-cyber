@@ -23,6 +23,23 @@ public class Vectors
             return -2;
         return 0; //if(object.type.equals("LavaGiant"))
     }
+     //get a list of our elf's aura and transfer it to a list of Vectors
+    public static List<Vectors>(Game game,List<GameObject> objects)
+    {
+       List<Vectors> auraV = new ArrayList<Vectors>();// aura after transformation to Vectors
+       for(GameObject object:objects)
+        {
+            Vectors vector =new Vectors(object);
+            auraV.add(vector);
+        }
+        if(!objects.contains(game.getEnemyCastle())
+            {
+                Vectors vector =new Vectors(game.getEnemyCastle());
+                auraV.add(vector);
+            }
+        return auraV;
+        
+    }
     public Location getLocation()
     {
         return this.location;

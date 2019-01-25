@@ -24,7 +24,7 @@ public class Vectors
         return 0; //if(object.type.equals("LavaGiant"))
     }
      //get a list of our elf's aura and transfer it to a list of Vectors
-    public static List<Vectors>(Game game,List<GameObject> objects)
+    public static List<Vectors> getVectors(Game game,List<GameObject> objects)
     {
        List<Vectors> auraV = new ArrayList<Vectors>();// aura after transformation to Vectors
        for(GameObject object:objects)

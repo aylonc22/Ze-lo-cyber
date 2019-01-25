@@ -1,0 +1,38 @@
+ //  // try to find all the game objects in 3 times  elf range attack if cant find return null
+    private List<GameObject> getElfAura(Game game, Elf chosenElf)
+    {
+        List<GameObject> objects = new List<GameObject>();
+        if(getEnemyGameObjects(game).size==0)
+            return null;
+        for(GameObject object:getEnemyGameObjects(game))
+        {
+            if(chosenElf.distance(object)<=game.elfAttackRange*3)
+                objects.add(object);
+        }
+        return objects;
+    }
+    // get a list of all the game objects of the enemy
+    private List<GameObject> getEnemyGameObjects(Game game)
+    {
+        List<GameObject> objects = new ArrayList<GameObject>();
+        // portal
+        for(Portal enemyPortal: game.getEnemyPortals())
+            {
+                objects.add(enemyPortal);
+            }
+        // creature
+        for(Creature creature:game.getEnemyCreatures())
+            {
+                objects.add(creature);
+            }
+        // castle
+       
+          objects.add(game.getEnemyCastle());
+           
+        // enemy elf
+        for(Elf enemyElf:game.getEnemyLivingElves())
+            {
+                objects.add(enemyElf);
+            }
+        return objects;
+    }

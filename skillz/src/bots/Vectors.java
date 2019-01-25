@@ -14,7 +14,31 @@ public class Vectors
     private static int setPower(GameObject object)
     {
        if(object.type.equals("IceTrol"))
-    	   return 7;
+    	   return 1;
+        if(object.type.equals("Elf"))
+            return 2;
+        if(object.type.equals("Portal"))
+            return -1;
+        if(object.type.equals("Castle"))
+            return -2;
+        return 0; //if(object.type.equals("LavaGiant"))
+    }
+     //get a list of our elf's aura and transfer it to a list of Vectors
+    public static List<Vectors> getVectors(Game game,List<GameObject> objects)
+    {
+       List<Vectors> auraV = new ArrayList<Vectors>();// aura after transformation to Vectors
+       for(GameObject object:objects)
+        {
+            Vectors vector =new Vectors(object);
+            auraV.add(vector);
+        }
+        if(!objects.contains(game.getEnemyCastle())
+            {
+                Vectors vector =new Vectors(game.getEnemyCastle());
+                auraV.add(vector);
+            }
+        return auraV;
+        
     }
     public Location getLocation()
     {

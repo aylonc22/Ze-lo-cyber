@@ -1,8 +1,8 @@
  //  // try to find all the game objects in 3 times  elf range attack if cant find return null
     public static List<GameObject> getElfAura(Game game, Elf chosenElf)
     {
-        List<GameObject> objects = new List<GameObject>();
-        if(getEnemyGameObjects(game).size==0)
+        List<GameObject> objects = new ArrayList<GameObject>();
+        if(getEnemyGameObjects(game).size()==0)
             return null;
         for(GameObject object:getEnemyGameObjects(game))
         {

@@ -1,5 +1,5 @@
  //  // try to find all the game objects in 3 times  elf range attack if cant find return null
-    private List<GameObject> getElfAura(Game game, Elf chosenElf)
+    public static List<GameObject> getElfAura(Game game, Elf chosenElf)
     {
         List<GameObject> objects = new List<GameObject>();
         if(getEnemyGameObjects(game).size==0)
@@ -12,7 +12,7 @@
         return objects;
     }
     // get a list of all the game objects of the enemy
-    private List<GameObject> getEnemyGameObjects(Game game)
+    public static List<GameObject> getEnemyGameObjects(Game game)
     {
         List<GameObject> objects = new ArrayList<GameObject>();
         // portal

@@ -32,6 +32,21 @@ public class getLocations
         }
         return closeEnemyPortal;
     }
+    // find the closest enemy portal to our castle if cant find return null
+    public static Portal getCloseEnemyPortal(Game game)
+    {
+        Portal[] check = game.getEnemyPortals();
+        if(check.length==0)
+            return null;
+        Castle myCastle = game.getMyCastle();
+        Portal closeEnemyPortal = game.getEnemyPortals()[0];
+        for(Portal enemyPortal : game.getEnemyPortals())
+        {
+            if(myCastle.distance(closeEnemyPortal)>myCastle.distance(enemyPortal))
+                closeEnemyPortal = enemyPortal;
+        }
+        return closeEnemyPortal;
+    }
     // find the closest Ice troll if can't find return null
     public static IceTroll getCloseEnemyIceTroll(Game game,Elf chosenElf)
     {

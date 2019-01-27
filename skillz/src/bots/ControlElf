@@ -20,17 +20,18 @@ public class ControlElf
             {
                  Location location = new Location(getLocations.getDefensivePortal(game));
                  Elf closeElf = getLocations.getCloseElf(game,location);
-                 if(closeElf.getLocation()==location)
-                    {
-                        closeElf.buildPortal();
-                        return true;
-                    }
-                  else
-                    {
-                        closeElf.moveTo(location)
-                        return true;
-                    }
+                 placePortal(location,closeElf);
+                 return true;
             }
         return false;
+    }
+    // check if possible to build portal and exucute
+    public static void placePortal(Location location,Elf chosenElf)
+    {
+        if(chosenElf.getLocation()==location)
+                        chosenElf.buildPortal();
+                  else
+                        chosenElf.moveTo(location);
+                    
     }
 }

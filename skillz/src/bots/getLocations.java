@@ -115,6 +115,31 @@ public class getLocations
             }
         return closeElf;
     }
+    // check if there is an opposite  defensive portal in radious if there is return true if there is not return false
+    public static  boolean oppositePortal(Game game)
+    {
+         Portal[] check = game.getEnemyPortals();
+        if(check.length==0)
+            return true;
+        Location newPortalLocation = getDefensivePortal(game);
+        if(newPortalLocation.distance(getClosePortal(game,newPortalLocation))>game.Portal.size()*2 )
+            return true;
+        return false;
+    }
+    // get the closest portal to a specific location if cant return null
+    public static portal getClosePortal(Game game,Location location)
+    {
+        Portal[] check = game.getMyPortals();
+        if(check.length==0)
+            return null;
+        Portal closestPortal = game.getMyPortals()[0];
+        for(Portal myPortal:game.getMyPortals())
+            {
+                if(closestPortal.distance(location)>myPortal.distance(location))
+                    closestPortal = myPortal;
+            }
+        return closestPortal;
+    }
     //gets elf and array of threatening creatures return the best escape root.
     public static Location getEscapeLocation(Game game,Elf chosenElf,IceTroll[] creatures) 
     {

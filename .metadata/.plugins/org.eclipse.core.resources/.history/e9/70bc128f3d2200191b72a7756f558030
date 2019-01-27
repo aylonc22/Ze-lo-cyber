@@ -32,7 +32,13 @@ public class Vectors
             Vectors vector =new Vectors(object);
             auraV.add(vector);
         }
-        return auraV;   
+        if(!objects.contains(game.getEnemyCastle()))
+            {
+                Vectors vector =new Vectors(game.getEnemyCastle());
+                auraV.add(vector);
+            }
+        return auraV;
+        
     }
     public Location getLocation()
     {

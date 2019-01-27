@@ -3,10 +3,6 @@ import elf_kingdom.*;
 import java.util.*;
 public class getLocations 
 {
-	public static final int AuraRadius(Game game)
-	{
-		return game.elfAttackRange*3;
-	}
     // find the closest enemy elf if can't find return null
     public static Elf getCloseEnemyElf(Game game,Elf chosenElf)
     {
@@ -126,12 +122,12 @@ public class getLocations
         if(check.length==0)
             return true;
         Location newPortalLocation = getDefensivePortal(game);
-        if(newPortalLocation.distance(getClosePortal(game,newPortalLocation))>game.portalSize*2 )
+        if(newPortalLocation.distance(getClosePortal(game,newPortalLocation))>game.Portal.size()*2 )
             return true;
         return false;
     }
     // get the closest portal to a specific location if cant return null
-    public static Portal getClosePortal(Game game,Location location)
+    public static portal getClosePortal(Game game,Location location)
     {
         Portal[] check = game.getMyPortals();
         if(check.length==0)
@@ -145,20 +141,18 @@ public class getLocations
         return closestPortal;
     }
     //gets elf and array of threatening creatures return the best escape root.
-    public static Location getEscapeLocation(Game game,Elf chosenElf,List<Vectors> vectors) 
+    public static Location getEscapeLocation(Game game,Elf chosenElf,IceTroll[] creatures) 
     {
-//    	int VectorSize=game.elfMaxSpeed;
+    	int VectorSize=game.elfMaxSpeed;
     	Location escapePoint , finalEscapePoint = new Location(0,0);
-    	for(Vectors vector : vectors) 
+    	for(IceTroll iceTrol : creatures) 
     	{
-            escapePoint = vector.getLocation().towards(chosenElf.getLocation(),AuraRadius(game)*vector.getPower());
+            escapePoint = iceTrol.getLocation().towards(chosenElf.getLocation(),VectorSize);
             finalEscapePoint.add(escapePoint);
     	}
-    	escapePoint = chosenElf.getLocation().towards(game.getEnemyCastle().getLocation(),AuraRadius(game)*-2);
-    	finalEscapePoint.add(escapePoint);
-    	finalEscapePoint.col /= vectors.size()+1;
-    	finalEscapePoint.row /= vectors.size()+1;
-    	finalEscapePoint = chosenElf.getLocation().towards(finalEscapePoint, AuraRadius(game)-finalEscapePoint.distance(chosenElf));
+    	finalEscapePoint.col /= creatures.length;
+    	finalEscapePoint.row /= creatures.length;
+    	finalEscapePoint = chosenElf.getLocation().towards(finalEscapePoint, VectorSize-finalEscapePoint.distance(chosenElf));
     	return finalEscapePoint;
     }
 }

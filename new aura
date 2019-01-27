@@ -25,9 +25,6 @@
             {
                 objects.add(creature);
             }
-        // castle
-       
-          objects.add(game.getEnemyCastle());
            
         // enemy elf
         for(Elf enemyElf:game.getEnemyLivingElves())
